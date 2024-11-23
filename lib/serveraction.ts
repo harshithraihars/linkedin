@@ -122,7 +122,7 @@ export const createCommentAction = async (
       textMessage: inputtext,
       user: userDatabase,
     });
-    post.comments?.push(comment);
+    post.comments?.push(comment._id);
     await post.save();
     revalidatePath("/");
   } catch (error) {

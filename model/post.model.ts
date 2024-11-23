@@ -1,4 +1,4 @@
-import mongoose,{Document, Model} from "mongoose"
+import mongoose,{Document, Model, Types} from "mongoose"
 import { IUser } from "./user.model"
 import { IComment } from "./comment.model"
 export interface IPost{
@@ -6,7 +6,7 @@ export interface IPost{
     user:IUser,
     imageUrl?:string
     likes?:string[]
-    comments:IComment[]
+    comments:Types.ObjectId[]
 }
 export interface IPostDocument extends IPost,Document{
     _id:string,

@@ -13,8 +13,9 @@ export const GET=async (req:NextRequest,{params}:{params:{postId:string}})=>{
             path:"comments",
             options:{sort:{createdAt:-1}}
         })
-    }catch(error:any){
-        return NextResponse.json({error:"Error Found"})
+        return NextResponse.json({comments})
+    }catch(error){
+        return NextResponse.json({error:"Error Found"+error})
     }
 
 }

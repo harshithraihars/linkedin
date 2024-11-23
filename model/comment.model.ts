@@ -31,5 +31,5 @@ const commentSchema=new mongoose.Schema<ICommentDocument>({
          required:true,
         }
      },
-})
+},{timestamps:true})
 export const Comment:Model<IComment>=mongoose.models?.Comment ||mongoose.model("Comment",commentSchema)

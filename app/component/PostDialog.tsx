@@ -3,13 +3,10 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import ProfilePhoto from "./ProfilePhoto";
 import { Textarea } from "@/components/ui/textarea";
 import { Images } from "lucide-react";
@@ -17,6 +14,7 @@ import { useRef, useState } from "react";
 import { readFileasDataurl } from "@/lib/utils";
 import Image from "next/image";
 import { createPostAction,} from "@/lib/serveraction";
+import { toast } from "sonner";
 
 export function PostDialog({
   open,
@@ -65,7 +63,14 @@ export function PostDialog({
             </div>
           </DialogTitle>
         </DialogHeader>
-        <form action={postActionHandler}>
+        <form action={(formData)=>{
+          const promise=postActionHandler(formData)
+          toast.promise(promise,{
+            loading:"Creating Post...",
+            success:"Post Created Successfully",
+            error:"Failed to Create Post"
+          })
+        }}>
           <div className="flex flex-col">
             <Textarea
             onChange={((e)=>setInputText(e.target.value))}

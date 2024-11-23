@@ -3,7 +3,7 @@ import { useUser } from "@clerk/nextjs";
 import React from "react";
 import ProfilePhoto from "./ProfilePhoto";
 import { Button } from "@/components/ui/button";
-import { icons, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import PostContent from "./PostContent";
 import SocialOption from "./SocialOption";

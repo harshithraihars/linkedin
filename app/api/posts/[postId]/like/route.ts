@@ -11,8 +11,8 @@ export const GET=async (req:NextRequest,{params}:{params:{postId:string}})=>{
             return NextResponse.json({error:"Post Not Found"})
         }
         return NextResponse.json(post.likes)
-    }catch(error:any){
-        return NextResponse.json({error:"Error Occured"})
+    }catch(error){
+        return NextResponse.json({error:"Error Occured"+error})
         
     }
 }
@@ -29,8 +29,8 @@ export const POST=async (req:NextRequest,{params}:{params:{postId:string}})=>{
         await post.updateOne({$addToSet:{likes:userId}})
         await post.save()        
         return NextResponse.json({message:"Post liked Successfully"})
-    }catch(error:any){
-        return NextResponse.json({error:"Error Occured"})
+    }catch(error){
+        return NextResponse.json({error:"Error Occured"+error})
         
     }
 }
