@@ -22,7 +22,7 @@ export function PostDialog({
   src,
 }: {
   open: boolean;
-  setOpen: any;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   src: string;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);

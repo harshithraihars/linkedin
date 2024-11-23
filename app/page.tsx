@@ -1,9 +1,7 @@
-import Image from "next/image";
 import Feed from "./component/Feed";
 import News from "./component/News";
 import Sidebar from "./component/Sidebar";
 import { currentUser } from "@clerk/nextjs/server";
-import { log } from "console";
 
 export default async function Home() {
   const user=await currentUser()  

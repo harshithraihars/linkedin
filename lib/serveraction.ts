@@ -6,9 +6,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { v2 as cloudinary } from "cloudinary";
 import { connectDB } from "./db";
 import { revalidatePath } from "next/cache";
-import { useUser } from "@clerk/nextjs";
 import { Comment } from "@/model/comment.model";
-import mongoose from "mongoose";
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
@@ -20,7 +18,7 @@ export const createPostAction = async (
   selectedFile: string
 ) => {
   await connectDB();
-  const user: any = await currentUser();
+  const user= await currentUser();
   if (!user) {
     throw new Error("user not Authenticated");
   }
@@ -56,7 +54,7 @@ export const createPostAction = async (
     }
     // when you upload the path it should be visible in the ral time so you are playing with the cache
     revalidatePath("/");
-  } catch (error: any) {
+  } catch (error) {
     // console.log(error.message);
     console.log(error);
   }
@@ -74,7 +72,7 @@ export const getAllPost = async () => {
       });
       if(!posts) return []
     return JSON.parse(JSON.stringify(posts));
-  } catch (error: any) {
+  } catch (error) {
     console.log(error);
   }
 };
@@ -94,7 +92,7 @@ export const deletePostAction = async (postId: string) => {
     try {
       await post.deleteOne({ _id: postId });
       revalidatePath("/");
-    } catch (error: any) {
+    } catch (error) {
       console.log(error);
     }
   }
@@ -126,6 +124,6 @@ export const createCommentAction = async (
     await post.save();
     revalidatePath("/");
   } catch (error) {
-    throw new Error("Error ocuured");
+    throw new Error("Error ocuured"+error);
   }
 };

@@ -2,8 +2,10 @@
 import React, { useState } from 'react'
 import ProfilePhoto from './ProfilePhoto'
 import { PostDialog } from './PostDialog'
-
-const PostInput = ({user}:{user:any}) => {
+interface User{
+  imageUrl:string
+}
+const PostInput = ({user}:{user:User}) => {
     const [open,setOpen]=useState<boolean>(false)
     const inputHandler=()=>{
         setOpen(true)

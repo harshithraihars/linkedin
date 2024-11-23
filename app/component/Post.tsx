@@ -20,7 +20,7 @@ const Post = ({ post }: { post: IPostDocument }) => {
   return (
     <div className="bg-white my-2 mx-2 md:mx-0 border border-gray-300">
       <div className="flex gap-2 p-4">
-        <ProfilePhoto src={post?.user?.profilePhoto!} />
+        <ProfilePhoto src={post?.user?.profilePhoto || "profile.png"} />
         <div className="flex justify-between items-center w-full">
           <div>
             <h1 className="text-sm font-bold">

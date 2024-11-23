@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { IPostDocument } from "@/model/post.model";
 import { useUser } from "@clerk/nextjs";
 import { MessageCircleMore, Repeat, Send, ThumbsUp } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import CommentInput from "./CommentInput";
 import Comments from "./Comments";
 

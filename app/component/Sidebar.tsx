@@ -2,8 +2,13 @@ import Image from 'next/image'
 import React from 'react'
 import ProfilePhoto from './ProfilePhoto'
 import { getAllPost } from '@/lib/serveraction'
-
-const Sidebar =async  ({user}:{user:any}) => {
+interface User{
+    imageUrl:string,
+    firstName:string,
+    lastName:string,
+    username:string
+}
+const Sidebar =async  ({user}:{user:User}) => {
     const posts=await getAllPost()
     
   return (
