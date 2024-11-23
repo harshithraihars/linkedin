@@ -22,16 +22,16 @@
 
 import { connectDB } from "@/lib/db";
 import { Post } from "@/model/post.model";
-import { NextRequest, NextResponse, RouteHandlerContext } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (
   req: NextRequest,
-  context: RouteHandlerContext<{ postId: string }>
+  { params }: { params: { postId: string } }
 ) => {
   try {
     await connectDB();
 
-    const { postId } = context.params;
+    const { postId } = params;
     const { userId }: { userId: string } = await req.json();
 
     if (!userId) {
@@ -61,3 +61,4 @@ export const POST = async (
     );
   }
 };
+
