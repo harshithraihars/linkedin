@@ -56,7 +56,7 @@ export const POST = async (
     return NextResponse.json({ message: "Post disliked successfully." });
   } catch (error) {
     return NextResponse.json(
-      { error: "An error occurred while disliking the post." },
+      { error: "An error occurred while disliking the post."+error },
       { status: 500 }
     );
   }
