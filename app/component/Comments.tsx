@@ -2,9 +2,7 @@ import { IPostDocument } from '@/model/post.model'
 import React from 'react'
 import Comment from './Comment'
 
-const Comments = ({post}:{post:IPostDocument}) => {
-  console.log(post.comments);
-  
+const Comments = ({post}:{post:IPostDocument}) => {  
   return (
     <div>
       {
