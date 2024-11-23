@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '20mb', // Maintain this configuration
+    },
+  },
+  images: {
+    domains: ['res.cloudinary.com'], // Allow Cloudinary images
+  },
 };
 
 export default nextConfig;
